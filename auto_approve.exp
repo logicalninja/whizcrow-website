@@ -1,0 +1,14 @@
+#!/usr/bin/expect -f
+set timeout -1
+spawn npm run dev
+expect {
+  -re "\\?" {
+    send "\r"
+    exp_continue
+  }
+  "Compiled /admin" {
+    send_user "\nAdmin detected, waiting for enums...\n"
+    exp_continue
+  }
+}
+interact

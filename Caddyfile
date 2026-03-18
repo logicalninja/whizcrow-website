@@ -1,0 +1,13 @@
+{
+    email hello@whizcrow.com
+}
+
+whizcrow.com, www.whizcrow.com, app.whizcrow.com {
+    reverse_proxy web:3000
+    encode gzip zstd
+}
+
+monitor.whizcrow.com {
+    reverse_proxy netdata:19999
+    encode gzip zstd
+}

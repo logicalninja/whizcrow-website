@@ -1,0 +1,218 @@
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { Shield, Zap, Bot, Search, MessageSquare, Palette, Share2, Target, ShoppingBag, Calendar, BarChart3, Code2, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { Metadata } from "next";
+import JsonLd from "@/components/seo/JsonLd";
+
+export const metadata: Metadata = {
+    title: "Services | The Reputation Ecosystem",
+    description: "WhizCrow services are engineered to feed the BRAM™ Engine. Explore our three tactical layers: Integrity Core, Engagement Engine, and Intelligence Arsenal.",
+};
+
+const layers = [
+    {
+        id: "integrity",
+        title: "Layer 1: The Integrity Core",
+        subtitle: "Ecosystem Defense",
+        description: "The fundamental pillars of digital truth and baseline defense.",
+        icon: Shield,
+        color: "text-primary",
+        items: [
+            {
+                title: "Online Reputation Management (ORM)",
+                desc: "Our core competency. We deploy proprietary SERP suppression, content removal, and high-velocity sentiment engineering to safeguard your digital existence.",
+                icon: Search
+            },
+            {
+                title: "PR & Crisis Communication",
+                desc: "Immediate war room activation. We mobilize specialized response teams to dominate the narrative and neutralize threats before they impact market value.",
+                icon: Shield
+            },
+            {
+                title: "Institutional Branding (Visual Authority)",
+                desc: "Designing world-class visual identities that project unshakeable trust. We ensure your aesthetic matches your institutional stature.",
+                icon: Palette
+            },
+            {
+                title: "Narrative Governance (Strategic Content)",
+                desc: "High-authority content distribution designed to insulate your brand behind an impenetrable wall of positive search results.",
+                icon: MessageSquare
+            }
+        ]
+    },
+    {
+        id: "engagement",
+        title: "Layer 2: The Engagement Engine",
+        subtitle: "Growth & Influence",
+        description: "Generating the digital velocity and authentic traction that drives BRAM™ performance.",
+        icon: Zap,
+        color: "text-secondary",
+        items: [
+            {
+                title: "Performance & Growth Marketing",
+                desc: "Direct-response campaigns engineered for high-LTV sectors where trust and reputation are the primary conversion variables.",
+                icon: Target
+            },
+            {
+                title: "Social Authority & Influencer Sync",
+                desc: "Mobilizing authentic voices to build a fortress of positive sentiment that survives viral pressure and peer scrutiny.",
+                icon: Share2
+            },
+            {
+                title: "Strategic Lead Acquisition",
+                desc: "Aggressive, reputation-led funnel design that identifies and secures high-value opportunities with precision.",
+                icon: Zap
+            },
+            {
+                title: "Global Commerce Systems",
+                desc: "Optimizing international sales trajectories for enterprise brands, ensuring every transaction reinforces brand dominance.",
+                icon: ShoppingBag
+            },
+            {
+                title: "Stakeholder Experience (MICE)",
+                desc: "Bespoke management of high-stakes corporate summits and events where reputation is established in person.",
+                icon: Calendar
+            }
+        ]
+    },
+    {
+        id: "intelligence",
+        title: "Layer 3: The Intelligence Arsenal",
+        subtitle: "Future Readiness",
+        description: "Deploying the technological infrastructure to win the 24/7 digital and machine-driven narrative wars.",
+        icon: Bot,
+        color: "text-orange-500",
+        items: [
+            {
+                title: "Conversational AI & Automation",
+                desc: "Architecting custom-trained LLMs that handle complex interactions with 100% brand-voice fidelity and governance.",
+                icon: Bot
+            },
+            {
+                title: "BRAM™ Predictive Analytics",
+                desc: "The mathematics of trust. We use regression models to demonstrate exactly how reputation volatility impacts your bottom line.",
+                icon: BarChart3
+            },
+            {
+                title: "Software Engineering & Defense R&D",
+                desc: "We develop the proprietary internal tools used to monitor 400M+ real-time sources across the unindexed web.",
+                icon: Code2
+            }
+        ]
+    }
+];
+
+export default function ServicesPage() {
+    return (
+        <div className="flex flex-col min-h-screen bg-stone-50">
+            <JsonLd type="Service" data={{
+                name: "Online Reputation Management (ORM)",
+                description: "Advanced SERP suppression, content removal, and sentiment engineering to protect institutional value."
+            }} />
+            <JsonLd type="Service" data={{
+                name: "AI Search Defense",
+                description: "Ensuring brand citations within AI training weights (OpenAI, Perplexity, Anthropic) cite you as the authority."
+            }} />
+            <JsonLd type="Service" data={{
+                name: "24/7 Crisis Response",
+                description: "Elite War Room deployment for active viral threats, legal attacks, and high-velocity smear campaigns."
+            }} />
+            <JsonLd type="BreadcrumbList" data={{
+                itemListElement: [
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://whizcrow.com" },
+                    { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://whizcrow.com/services" }
+                ]
+            }} />
+            <Header />
+
+            <main className="flex-grow pt-24 md:pt-32 pb-20">
+                <div className="container mx-auto px-6 max-w-7xl">
+                    {/* Hero Header */}
+                    <div className="max-w-3xl mb-16 md:mb-24">
+                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-stone-900 mb-6 md:mb-8 tracking-tighter leading-[1.1]">
+                            The Reputation <br />
+                            <span className="text-primary italic">Ecosystem.</span>
+                        </h1>
+                        <p className="text-lg md:text-2xl text-stone-600 leading-relaxed px-1 md:px-0 font-medium">
+                            We didn&apos;t build a marketing agency that does reputation. We built a <span className="text-stone-900 font-bold underline decoration-primary/30 underline-offset-4">Reputation Arm</span> that mastered marketing, AI, and code to win the digital wars others don&apos;t even see.
+                        </p>
+                    </div>
+
+                    {/* Layers */}
+                    <div className="space-y-20 md:space-y-32">
+                        {layers.map((layer) => (
+                            <section key={layer.id} id={layer.id} className="relative">
+                                {/* Layer Label */}
+                                <div className="flex items-center gap-4 mb-8 md:mb-12">
+                                    <div className={`p-2.5 md:p-3 rounded-xl md:rounded-2xl bg-white border border-stone-200 shadow-sm ${layer.color}`}>
+                                        <layer.icon size={28} className="md:w-8 md:h-8" />
+                                    </div>
+                                    <div>
+                                        <h2 className="text-2xl md:text-3xl font-bold text-stone-900">{layer.title}</h2>
+                                        <p className="text-stone-500 font-bold uppercase tracking-widest text-[10px] md:text-xs mt-1">{layer.subtitle}</p>
+                                    </div>
+                                </div>
+
+                                <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-start">
+                                    {/* Left: Description */}
+                                    <div className="md:sticky md:top-32 h-fit pb-12 md:pb-0">
+                                        <p className="text-xl md:text-2xl text-stone-800 font-medium leading-relaxed mb-8">
+                                            {layer.description}
+                                        </p>
+                                        <Link
+                                            href="/book"
+                                            className="inline-flex items-center gap-2 px-8 py-4 bg-stone-900 text-white font-bold rounded-full hover:bg-stone-800 transition-all hover:gap-3 group shadow-xl shadow-stone-900/10 mb-8 md:mb-0"
+                                        >
+                                            Connect with our Strategy Team
+                                            <ArrowRight size={20} className="text-primary group-hover:translate-x-1 transition-transform" />
+                                        </Link>
+                                    </div>
+
+                                    {/* Right: Items */}
+                                    <div className="grid gap-6">
+                                        {layer.items.map((item) => (
+                                            <div key={item.title} className="p-6 md:p-8 bg-white rounded-2xl md:rounded-3xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow group">
+                                                <div className="flex items-start gap-4">
+                                                    <div className={`p-2 rounded-lg bg-stone-50 transition-colors group-hover:bg-primary/10 ${layer.color} shrink-0`}>
+                                                        <item.icon size={20} className="md:w-6 md:h-6" />
+                                                    </div>
+                                                    <div>
+                                                        <h4 className="text-lg md:text-xl font-bold text-stone-900 mb-1.5">{item.title}</h4>
+                                                        <p className="text-stone-500 leading-relaxed font-medium text-sm md:text-base">
+                                                            {item.desc}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </section>
+                        ))}
+                    </div>
+
+                    {/* Bottom CTA */}
+                    <div className="mt-32 p-12 md:p-20 bg-primary rounded-[3rem] text-stone-950 text-center relative overflow-hidden">
+                        <div className="relative z-10">
+                            <h3 className="text-4xl md:text-5xl font-extrabold mb-8 max-w-2xl mx-auto">
+                                Engineered to fuel the BRAM™ Engine.
+                            </h3>
+                            <Link
+                                href="/book"
+                                className="inline-flex items-center gap-3 px-10 py-5 bg-stone-950 text-white font-black text-xl rounded-full hover:scale-105 transition-all shadow-[0_20px_50px_rgba(0,0,0,0.3)] active:scale-95"
+                            >
+                                Get My BRAM™ Brand Audit
+                                <ArrowRight size={22} className="text-primary" />
+                            </Link>
+                        </div>
+                        {/* Decorative Circle */}
+                        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
+                    </div>
+                </div>
+            </main>
+
+            <Footer />
+        </div>
+    );
+}

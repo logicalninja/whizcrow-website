@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        - NEXT_PUBLIC_POSTHOG_KEY=${NEXT_PUBLIC_POSTHOG_KEY}
+        - NEXT_PUBLIC_POSTHOG_HOST=${NEXT_PUBLIC_POSTHOG_HOST}
+        - NEXT_PUBLIC_GA_ID=${NEXT_PUBLIC_GA_ID}
+        - NEXT_PUBLIC_GTM_ID=${NEXT_PUBLIC_GTM_ID}
+        - NEXT_PUBLIC_RECAPTCHA_SITE_KEY=${NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+        - NEXT_PUBLIC_META_PIXEL_ID=${NEXT_PUBLIC_META_PIXEL_ID}
+    restart: always
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.local
+    environment:
+      - NODE_ENV=production
+    networks:
+      - whizcrow-net
+
+  caddy:
+    image: caddy:latest
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - whizcrow-net
+
+  netdata:
+    image: netdata/netdata
+    restart: always
+    hostname: whizcrow-monitor
+    ports:
+      - "19999:19999"
+    cap_add:
+      - SYS_PTRACE
+      - SYS_ADMIN
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - netdata_config:/etc/netdata
+      - netdata_lib:/var/lib/netdata
+      - netdata_cache:/var/cache/netdata
+      - /etc/passwd:/host/etc/passwd:ro
+      - /etc/group:/host/etc/group:ro
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /etc/os-release:/host/etc/os-release:ro
+    networks:
+      - whizcrow-net
+
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=whizcrow
+      - POSTGRES_PASSWORD=whizcrow_secure_pass
+      - POSTGRES_DB=whizcrow_cms
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - whizcrow-net
+    ports:
+      - "5432:5432"
+
+networks:
+  whizcrow-net:
+    driver: bridge
+
+volumes:
+  caddy_data:
+  caddy_config:
+  netdata_config:
+  netdata_lib:
+  netdata_cache:
+  postgres_data:

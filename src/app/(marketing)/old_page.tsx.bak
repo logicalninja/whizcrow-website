@@ -1,0 +1,67 @@
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { Hero } from "@/components/home/Hero";
+import { WhoWeAre } from "@/components/home/WhoWeAre";
+import { EmpoweredTechnologies } from "@/components/home/EmpoweredTechnologies";
+import { NarrativeEngineering } from "@/components/home/NarrativeEngineering";
+import { Testimonials } from "@/components/home/Testimonials";
+import { Outcomes } from "@/components/home/Outcomes";
+import { BramFramework } from "@/components/home/BramFramework";
+import { HighStakes } from "@/components/home/HighStakes";
+import { Intelligence } from "@/components/home/Intelligence";
+import { Guarantee } from "@/components/home/Guarantee";
+import { FAQ } from "@/components/home/FAQ";
+import { HomeCTA } from "@/components/home/HomeCTA";
+import { Newsletter } from "@/components/home/Newsletter";
+import JsonLd from "@/components/seo/JsonLd";
+
+const faqs = [
+  {
+    question: "Can you guarantee specific search results?",
+    answer: "No. Any agency that guarantees a specific Google outcome is likely using black-hat tactics that can get you penalized. We guarantee our work, our strategy, and our persistent execution to tilt the odds in your favor."
+  },
+  {
+    question: "How long does reputation repair take?",
+    answer: "Reputation is momentum. You will typically see initial movement in 30-90 days, but true authority building and suppression of stubborn negatives is a 6-12 month investment."
+  },
+  {
+    question: "Do you work with individuals?",
+    answer: "We primarily work with corporate entities. We do work with executives, founders, and public figures if they are attached to a corporate contract. We typically do not handle personal disputes or small business reputation issues."
+  },
+  {
+    question: "Is this confidential?",
+    answer: "100%. We operate under strict NDAs. We do not publish client lists, and our case studies are anonymized unless explicitly authorized."
+  }
+];
+
+export default function Home() {
+  return (
+    <div className="flex flex-col min-h-screen bg-stone-50">
+      <JsonLd type="WebSite" />
+      <JsonLd type="FAQPage" data={faqs} />
+      <JsonLd type="Service" data={{
+        name: "Online Reputation Management",
+        description: "Elite technology-driven reputation management for individuals and corporations."
+      }} />
+      <Header />
+
+      <main className="flex-grow">
+        <Hero />
+        <WhoWeAre />
+        <EmpoweredTechnologies />
+        <BramFramework />
+        <HighStakes />
+        <NarrativeEngineering />
+        <Outcomes />
+        <Intelligence />
+        <Testimonials />
+        <Guarantee />
+        <HomeCTA />
+        <FAQ />
+      </main>
+
+      <Newsletter />
+      <Footer />
+    </div>
+  );
+}
