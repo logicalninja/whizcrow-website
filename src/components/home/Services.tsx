@@ -12,7 +12,7 @@ export function Services() {
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                     <div className="max-w-2xl">
                         <h2 className="text-4xl md:text-5xl font-bold text-stone-900 leading-tight tracking-tight">
-                            Engineered exactly for your current challenges.
+                            The marketing services that actually move the needle.
                         </h2>
                     </div>
                 </div>
@@ -35,16 +35,16 @@ export function Services() {
                                 {service.desc}
                             </p>
                             <Link href={service.link} className="flex items-center gap-2 text-sm font-bold text-stone-900 group-hover:text-secondary mt-auto transition-colors">
-                                Explore Capability <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                                Learn More <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                             </Link>
                         </motion.div>
                     ))}
 
                     <div className="p-8 bg-stone-900 rounded-3xl flex flex-col justify-center items-start text-white col-span-1 md:col-span-2 xl:col-span-2">
-                        <h4 className="text-2xl font-bold mb-4">You shouldn't have to map this out yourself.</h4>
-                        <p className="text-stone-400 mb-8 text-lg">Tell us where it hurts, and our strategy team will tell you exactly which parts of this matrix will fix it.</p>
+                        <h4 className="text-2xl font-bold mb-4">Not sure where to start?</h4>
+                        <p className="text-stone-400 mb-8 text-lg">We'll assess your business and recommend exactly what will make the biggest difference.</p>
                         <Link href="/contact" className="px-8 py-4 rounded-full bg-white text-stone-900 font-bold hover:bg-stone-100 transition-colors">
-                            Talk To Strategy
+                            Get in Touch
                         </Link>
                     </div>
                 </div>

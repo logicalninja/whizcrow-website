@@ -3,8 +3,18 @@ import JsonLd from "@/components/seo/JsonLd";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Book a Reputation Audit | WhizCrow Advisors",
-    description: "Schedule an institutional discovery call with our senior strategy team to secure your digital asset value.",
+    title: "Book a Free Marketing Strategy Call — WhizCrow",
+    description: "Book a free marketing strategy consultation with WhizCrow's senior team. Get an honest plan for SEO, paid ads, branding, or your full marketing strategy.",
+    openGraph: {
+        title: "Book a Free Marketing Strategy Call — WhizCrow",
+        description: "Book a free marketing strategy consultation with WhizCrow's senior team. Get an honest plan for SEO, paid ads, branding, or your full marketing strategy.",
+        url: "https://whizcrow.com/book",
+        type: "website",
+    },
+    alternates: {
+        canonical: "https://whizcrow.com/book",
+    },
+    robots: { index: true, follow: true },
 };
 
 export default function BookPage() {

@@ -53,9 +53,9 @@ export function InstitutionalInquiryForm() {
                 <div className="w-20 h-20 bg-primary/20 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
                     <CheckCircle2 size={40} />
                 </div>
-                <h3 className="text-2xl font-bold text-stone-900 mb-2">Coordination Initiated</h3>
+                <h3 className="text-2xl font-bold text-stone-900 mb-2">We&apos;ll Be in Touch!</h3>
                 <p className="text-stone-500 font-medium">
-                    A Senior Advisor will reach out via secure channel within 2 hours.
+                    Thanks for reaching out. Someone from our team will get back to you within one business day.
                 </p>
             </div>
         );
@@ -75,7 +75,7 @@ export function InstitutionalInquiryForm() {
                     />
                 </div>
                 <div className="space-y-1.5">
-                    <label className="text-[10px] font-black uppercase tracking-wider text-stone-400 px-1">Corporate Email</label>
+                    <label className="text-[10px] font-black uppercase tracking-wider text-stone-400 px-1">Email Address</label>
                     <input
                         name="email"
                         required
@@ -110,11 +110,11 @@ export function InstitutionalInquiryForm() {
             </div>
 
             <div className="space-y-1.5">
-                <label className="text-[10px] font-black uppercase tracking-wider text-stone-400 px-1">Primary Concern</label>
+                <label className="text-[10px] font-black uppercase tracking-wider text-stone-400 px-1">Tell Us About Your Goals</label>
                 <textarea
                     name="message"
                     required
-                    placeholder="Briefly describe the volatility or strategic requirement..."
+                    placeholder="What are you looking to achieve? SEO, social media, paid ads, events — anything goes."
                     rows={3}
                     className="w-full px-5 py-3.5 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium resize-none text-sm"
                 />
@@ -129,7 +129,7 @@ export function InstitutionalInquiryForm() {
                     <span className="w-6 h-6 border-4 border-stone-900 border-t-transparent rounded-full animate-spin" />
                 ) : (
                     <>
-                        Initiate Discovery Protocol
+                        Send Message
                         <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                     </>
                 )}
@@ -138,7 +138,7 @@ export function InstitutionalInquiryForm() {
             <div className="flex items-center justify-center gap-2 text-stone-400 mt-4">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                 <p className="text-[10px] font-bold uppercase tracking-widest">
-                    Encrypted • NDA Available Upon Request
+                    We reply within one business day.
                 </p>
             </div>
         </form >

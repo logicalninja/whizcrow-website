@@ -62,13 +62,13 @@ export default function ThankYouPage() {
                         </a>
 
                         {/* WhatsApp Option */}
-                        <a href="https://wa.me/15558676280" target="_blank" rel="noopener noreferrer" className="group p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all flex items-center gap-4">
+                        <a href="https://wa.me/918369219922" target="_blank" rel="noopener noreferrer" className="group p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all flex items-center gap-4">
                             <div className="w-10 h-10 rounded-full bg-onyx flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <WhatsAppIcon className="w-5 h-5 text-[#25D366]" />
                             </div>
                             <div>
                                 <p className="text-xs text-stone-500 font-bold uppercase">WhatsApp Priority</p>
-                                <p className="text-white font-medium">+1 555-867-6280</p>
+                                <p className="text-white font-medium">+91 83692 19922</p>
                             </div>
                         </a>
                     </div>
@@ -81,7 +81,7 @@ export default function ThankYouPage() {
 
                     <div className="pt-8">
                         <a
-                            href="https://wa.me/15558676280?text=I%20just%20submitted%20the%20audit%20request%20and%20would%20like%20to%20connect%20immediately."
+                            href="https://wa.me/918369219922?text=I%20just%20submitted%20the%20audit%20request%20and%20would%20like%20to%20connect%20immediately."
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-3 px-10 py-5 bg-[#25D366] text-white font-bold rounded-2xl hover:bg-white hover:text-[#25D366] transition-all shadow-2xl shadow-[#25D366]/20 group text-lg"

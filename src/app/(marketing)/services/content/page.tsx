@@ -3,15 +3,25 @@ import { Metadata } from "next";
 import { ServiceLayout } from "@/components/marketing/ServiceLayout";
 
 export const metadata: Metadata = {
-    title: "WhizContent | High-Converting Copywriting & Authority Building",
-    description: "Words that work. WhizContent delivers high-authority strategy and elite copywriting that establishes your expertise and drives measurable conversions.",
+    title: "Content Marketing Agency & Content Writing Services India",
+    description: "WhizContent is a content marketing agency delivering expert content writing services across India. SEO blogs, conversion copy, whitepapers, and video scripts.",
+    openGraph: {
+        title: "Content Marketing Agency & Content Writing Services India",
+        description: "WhizContent is a content marketing agency delivering expert content writing services across India. SEO blogs, conversion copy, whitepapers, and video scripts.",
+        url: "https://whizcrow.com/services/content",
+        type: "website",
+    },
+    alternates: {
+        canonical: "https://whizcrow.com/services/content",
+    },
+    robots: { index: true, follow: true },
 };
 
 const contentPageData = {
     id: "content",
     title: "WhizContent",
-    heroSubtitle: "Words That Work",
-    heroDescription: "Content is how you get found, build trust, and convince people to buy. But only if it's world-class. WhizContent delivers words that work, engineered for authority.",
+    heroSubtitle: "Content That Sticks",
+    heroDescription: "Great content doesn't just fill a page — it builds authority, earns trust, and drives action long after it's published. WhizContent creates strategic, high-quality content that gets found, gets read, and gets results.",
     stats: [
         { label: "Quality", value: "Elite", icon: "Award" },
         { label: "Depth", value: "Strategic", icon: "Library" },
@@ -55,6 +65,32 @@ const contentPageData = {
         { title: "WhizDigital", link: "/services/digital" },
         { title: "WhizBrand", link: "/services/brand" },
         { title: "WhizPR", link: "/services/pr" }
+    ],
+    faqs: [
+        {
+            question: "Who writes the content — humans, AI, or both?",
+            answer: "Experienced human strategists and writers lead every project. We use AI as a research and drafting tool where it adds speed, but every piece is written, edited, and quality-checked by specialists who understand your industry, your brand voice, and what it takes for content to rank and convert. You'll never receive raw, unreviewed AI output."
+        },
+        {
+            question: "How do you make sure content ranks on Google?",
+            answer: "We approach every content project as an SEO asset first. That means in-depth keyword research, search intent mapping, competitor gap analysis, proper on-page structure (titles, H-tags, schema), internal linking strategy, and content length benchmarked against what's currently ranking. We don't write content that gets posted and forgotten."
+        },
+        {
+            question: "What types of content do you produce?",
+            answer: "The full stack. SEO blog posts and long-form guides, website copy (homepage, service pages, landing pages), email sequences, LinkedIn thought leadership, video scripts, whitepapers and reports, case studies, social media copy, and product descriptions for e-commerce. If your business needs words, we cover it."
+        },
+        {
+            question: "How long before content marketing shows results?",
+            answer: "Content marketing is a compounding investment, not a quick fix. Well-optimised content typically starts gaining search traction in 3–5 months as pages get indexed and build authority. By month 6–12, a well-executed content programme delivers consistent, high-intent organic traffic that keeps growing without additional ad spend."
+        },
+        {
+            question: "Do you develop a content strategy, or just write what I tell you?",
+            answer: "We build the strategy. At the start of every engagement we conduct a content audit, identify your highest-value topics, map content to your buyer journey, and create an editorial calendar aligned to your business goals. We write what will move the needle — not just what fills a content schedule."
+        },
+        {
+            question: "Can you write for technical or niche industries?",
+            answer: "Yes. We've produced content for fintech, healthcare, legal, B2B SaaS, real estate, manufacturing, and luxury sectors, among others. For specialist industries, we pair you with a writer who has direct domain knowledge and run every piece past a subject-matter review process before delivery."
+        }
     ]
 };
 

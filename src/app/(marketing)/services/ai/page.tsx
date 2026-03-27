@@ -3,8 +3,18 @@ import { Metadata } from "next";
 import { ServiceLayout } from "@/components/marketing/ServiceLayout";
 
 export const metadata: Metadata = {
-    title: "WhizAI | Automated AI Marketing & Intelligent Search",
-    description: "Automate the busy work. WhizAI deploys intelligent sales agents and AI receptionists to handle follow-ups and scale your business growth 24/7.",
+    title: "AI Marketing Automation Agency — WhizAI India",
+    description: "WhizAI is an AI marketing automation agency in India. We deploy intelligent AI sales agents, receptionists, CRM automation, and custom AI workflows 24/7.",
+    openGraph: {
+        title: "AI Marketing Automation Agency — WhizAI India",
+        description: "WhizAI is an AI marketing automation agency in India. We deploy intelligent AI sales agents, receptionists, CRM automation, and custom AI workflows 24/7.",
+        url: "https://whizcrow.com/services/ai",
+        type: "website",
+    },
+    alternates: {
+        canonical: "https://whizcrow.com/services/ai",
+    },
+    robots: { index: true, follow: true },
 };
 
 const aiPageData = {
@@ -55,6 +65,32 @@ const aiPageData = {
         { title: "WhizDigital", link: "/services/digital" },
         { title: "WhizContent", link: "/services/content" },
         { title: "WhizORM", link: "/services/orm" }
+    ],
+    faqs: [
+        {
+            question: "What is an AI receptionist and how does it work?",
+            answer: "An AI receptionist is an intelligent agent deployed on your website, WhatsApp, or phone line that handles inbound queries 24/7 — answering questions, qualifying leads, booking appointments, and routing urgent requests to your team. It's trained on your specific business data, speaks your brand voice, and connects directly to your CRM."
+        },
+        {
+            question: "Will AI automation replace my existing team?",
+            answer: "No — it frees them. Our AI deployments are designed to eliminate repetitive, low-value tasks: answering FAQs, sending follow-up emails, logging CRM entries, scheduling calls. Your human team focuses on relationships, strategy, and the high-value conversations that actually require judgment. Most clients see productivity increase significantly within the first month."
+        },
+        {
+            question: "What CRMs and tools do you integrate with?",
+            answer: "We integrate with the tools you already use. Primary integrations include Salesforce, GoHighLevel, HubSpot, Zoho, Google Calendar, WhatsApp Business API, and most major website platforms. If you use something else, we assess integration feasibility during onboarding — most common business tools are supported."
+        },
+        {
+            question: "How long does it take to deploy AI automation?",
+            answer: "A standard AI receptionist or sales agent deployment takes 2–4 weeks from kickoff to go-live. More complex multi-system automations may take 4–8 weeks. We work in sprints: define the workflow, build and test, then train your team before handover. You're involved at every checkpoint."
+        },
+        {
+            question: "Can we customise the AI's tone and responses?",
+            answer: "Completely. Every AI we deploy is trained on your brand guidelines, FAQs, product/service catalogue, and tone of voice. You approve the conversation flows before launch. If a response needs updating — new offering, policy change, seasonal message — we update it for you or train your team to do it themselves."
+        },
+        {
+            question: "Is AI automation expensive for a growing business?",
+            answer: "It's more affordable than hiring. A well-deployed AI receptionist typically costs less per month than a part-time employee, while operating 24/7 with zero sick days, zero training overhead, and instant scale. We scope each deployment to your budget and current stage — there's no minimum size requirement to get started."
+        }
     ]
 };
 

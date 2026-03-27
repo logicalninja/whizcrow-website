@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google"; // Import standard fonts
+import { Inter, Outfit, JetBrains_Mono } from "next/font/google"; // Import standard fonts
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Sentinel from "@/components/chat/Sentinel";
@@ -12,10 +12,15 @@ import { Suspense } from "react";
 import Script from "next/script";
 import { WhatsAppFloating } from "@/components/layout/WhatsAppFloating";
 import { ExitIntentPopup } from "@/components/layout/ExitIntentPopup";
-import ThemeInjector from "@/components/payload/ThemeInjector";
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
   display: "swap",
 });
@@ -27,10 +32,14 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WhizCrow | Reputation = Revenue",
-  description: "Protecting Enterprise Value with AI-Driven Reputation Intelligence. Architects of Digital Trust.",
-  keywords: ["Reputation Management", "Digital Trust", "Crisis Response", "Online Reputation Management", "Search Engine Suppression", "Wikipedia Editing", "Review Removal", "Brand Protection"],
-  authors: [{ name: "WhizCrow Intelligence" }],
+  metadataBase: new URL('https://whizcrow.com'),
+  title: {
+    default: 'WhizCrow | Full-Service Marketing Agency',
+    template: '%s | WhizCrow',
+  },
+  description: "WhizCrow is a full-service marketing agency in Mumbai. We deliver SEO, paid ads, branding, PR, AI automation, influencer marketing, ORM, and e-commerce growth.",
+  keywords: ["full-service marketing agency", "marketing agency Mumbai", "AI marketing agency", "SEO agency India", "digital marketing Mumbai", "ORM agency India", "branding agency Mumbai"],
+  authors: [{ name: "WhizCrow" }],
   creator: "WhizCrow",
   publisher: "WhizCrow",
   robots: {
@@ -45,31 +54,30 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "WhizCrow | Online Reputation Management (ORM) Agency",
-    description: "WhizCrow is an elite technology-driven intelligence agency dedicated to preserving institutional valuation and executive authority via AI-driven reputation intelligence.",
+    title: "WhizCrow | Full-Service Marketing Agency",
+    description: "WhizCrow is a full-service marketing agency in Mumbai. We deliver SEO, paid ads, branding, PR, AI automation, influencer marketing, ORM, and e-commerce growth.",
     url: "https://whizcrow.com",
     siteName: "WhizCrow",
     images: [
       {
-        url: "/favicon-custom.png",
+        url: "/logos/blackbackground.png",
         width: 1200,
         height: 630,
-        alt: "WhizCrow - Reputation Management for the AI Age",
+        alt: "WhizCrow - Full-Service Marketing Agency Mumbai",
       },
     ],
-    locale: "en_US",
+    locale: "en_IN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "WhizCrow | Reputation = Revenue",
-    description: "Protecting Enterprise Value with AI-Driven Reputation Intelligence.",
-    images: ["/favicon-custom.png"],
+    title: "WhizCrow | Full-Service Marketing Agency",
+    description: "WhizCrow is a full-service marketing agency in Mumbai delivering SEO, paid ads, branding, PR, AI automation, and more.",
+    images: ["/logos/blackbackground.png"],
     creator: "@whizcrow",
   },
-  metadataBase: new URL('https://whizcrow.com'),
   alternates: {
-    canonical: './',
+    canonical: 'https://whizcrow.com',
   },
   icons: {
     icon: '/favicon-custom.png',
@@ -85,7 +93,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <ThemeInjector />
+
         <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ""} />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ""} />
       </head>
@@ -93,6 +101,7 @@ export default function RootLayout({
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
           inter.variable,
+          outfit.variable,
           jetbrainsMono.variable
         )}
       >

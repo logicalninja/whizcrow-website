@@ -44,7 +44,7 @@ export function WhatsAppFloating() {
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#25D366]"></span>
                             </span>
-                            <span className="text-[10px] font-black uppercase tracking-widest text-[#25D366]">Instant Protocol</span>
+                            <span className="text-[11px] font-bold text-[#25D366]">Chat with us on whatsapp now!</span>
                         </div>
 
                         <p className="text-sm font-bold leading-snug">

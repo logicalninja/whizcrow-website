@@ -17,6 +17,8 @@ import {
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Newsletter } from "@/components/home/Newsletter";
+import { EmpoweredTechnologies } from "@/components/home/EmpoweredTechnologies";
+import { ServiceFAQ, type FAQItem } from "@/components/shared/ServiceFAQ";
 import { cn } from "@/lib/utils";
 
 // Icon mapping to resolve strings to components
@@ -46,6 +48,9 @@ interface ServiceLayoutProps {
     comparison: { label: string; others: string; us: string }[];
     results: string[];
     nextServices: { title: string; link: string }[];
+    extraSection?: React.ReactNode;
+    showTechLogos?: boolean;
+    faqs?: FAQItem[];
 }
 
 export function ServiceLayout({
@@ -53,6 +58,9 @@ export function ServiceLayout({
     heroSubtitle,
     heroDescription,
     stats,
+    extraSection,
+    showTechLogos,
+    faqs,
     benefits,
     targetAudience,
     steps,
@@ -64,32 +72,20 @@ export function ServiceLayout({
         <div className="flex flex-col min-h-screen bg-stone-50">
             <Header />
 
-            <main className="flex-grow pt-24">
+            <main className="flex-grow pt-24 md:pt-28">
                 {/* Hero Section */}
-                <section className="relative py-24 md:py-32 overflow-hidden bg-white">
+                <section className="relative pt-8 pb-16 md:pt-10 md:pb-20 overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-full opacity-40 pointer-events-none">
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] aspect-square bg-[radial-gradient(circle_at_top,_var(--primary)_0%,_transparent_60%)] opacity-10" />
                     </div>
 
-                    <div className="container mx-auto px-6 max-w-7xl relative z-10">
-                        <div className="flex flex-col items-center text-center">
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="flex items-center gap-3 mb-8"
-                            >
-                                <span className="px-4 py-1.5 rounded-full bg-stone-100 text-stone-500 text-[10px] font-black uppercase tracking-[0.2em] border border-stone-200">
-                                    Strategic Capability
-                                </span>
-                                <div className="h-px w-8 bg-stone-200" />
-                                <span className="text-primary font-black text-[10px] uppercase tracking-[0.2em]">Data. AI. Human.</span>
-                            </motion.div>
-
+                    <div className="max-w-7xl mx-auto px-6 relative z-10">
+                        <div className="max-w-4xl">
                             <motion.h1
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
-                                className="text-5xl md:text-8xl font-black text-stone-950 mb-8 tracking-tighter leading-tight"
+                                className="text-4xl md:text-6xl lg:text-7xl font-black text-stone-950 mb-4 tracking-tighter leading-[0.9]"
                             >
                                 {title}. <br />
                                 <span className="italic text-primary">{heroSubtitle}.</span>
@@ -99,7 +95,7 @@ export function ServiceLayout({
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.2 }}
-                                className="text-xl md:text-2xl text-stone-600 leading-relaxed max-w-3xl font-medium mb-12 mx-auto"
+                                className="text-base md:text-lg text-stone-600 leading-relaxed max-w-2xl font-medium mb-8"
                             >
                                 {heroDescription}
                             </motion.p>
@@ -108,17 +104,17 @@ export function ServiceLayout({
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
-                                className="flex flex-col md:flex-row gap-4 justify-center"
+                                className="flex flex-col md:flex-row gap-3"
                             >
                                 <Link
                                     href="/contact"
-                                    className="px-12 py-6 bg-stone-950 text-white font-black text-lg rounded-full hover:bg-stone-800 transition-all shadow-xl active:scale-95"
+                                    className="px-8 py-4 bg-stone-950 text-white font-black text-base rounded-full hover:bg-stone-800 transition-all shadow-xl active:scale-95"
                                 >
                                     Talk to a Specialist
                                 </Link>
                                 <Link
                                     href="#benefits"
-                                    className="px-12 py-6 bg-white text-stone-950 border-2 border-stone-100 font-black text-lg rounded-full hover:border-stone-200 transition-all active:scale-95"
+                                    className="px-8 py-4 bg-white text-stone-950 border-2 border-stone-100 font-black text-base rounded-full hover:border-stone-200 transition-all active:scale-95"
                                 >
                                     View Capabilities
                                 </Link>
@@ -126,7 +122,7 @@ export function ServiceLayout({
                         </div>
 
                         {/* Snapshot Stats */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-32">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
                             {stats.map((stat, i) => {
                                 const StatIcon = resolveIcon(stat.icon);
                                 return (
@@ -148,6 +144,8 @@ export function ServiceLayout({
                         </div>
                     </div>
                 </section>
+
+                {showTechLogos && <EmpoweredTechnologies />}
 
                 {/* Benefits / What You Get */}
                 <section id="benefits" className="py-32 bg-stone-50">
@@ -213,6 +211,8 @@ export function ServiceLayout({
                         </div>
                     </div>
                 </section>
+
+                {extraSection}
 
                 {/* How It Works / Steps */}
                 <section className="py-32 bg-stone-950 text-white overflow-hidden relative">
@@ -290,6 +290,8 @@ export function ServiceLayout({
                         </div>
                     </div>
                 </section>
+
+                {faqs && faqs.length > 0 && <ServiceFAQ faqs={faqs} />}
 
                 {/* Results Section */}
                 <section className="py-32 bg-stone-50 relative overflow-hidden">

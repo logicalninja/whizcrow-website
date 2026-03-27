@@ -63,24 +63,24 @@ export function ExitIntentPopup() {
                                     <ShieldCheck className="text-primary" size={24} />
                                 </div>
                                 <h4 className="text-white text-xl font-black mb-3 leading-tight tracking-tight">
-                                    Exclusive Strategy Consultation
+                                    Grow Your Business
                                 </h4>
                                 <div className="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest bg-primary/10 w-fit px-3 py-1 rounded-full mb-8">
-                                    <Zap size={12} /> Priority Access
+                                    <Zap size={12} /> Free Consultation
                                 </div>
 
                                 <div className="space-y-4">
                                     <div className="flex items-center gap-3 text-stone-400 text-sm font-medium">
                                         <div className="w-1 h-1 bg-stone-600 rounded-full" />
-                                        <span>Reputation Recovery</span>
+                                        <span>Full Service Marketing</span>
                                     </div>
                                     <div className="flex items-center gap-3 text-stone-400 text-sm font-medium">
                                         <div className="w-1 h-1 bg-stone-600 rounded-full" />
-                                        <span>Institutional Defense</span>
+                                        <span>Brand Development</span>
                                     </div>
                                     <div className="flex items-center gap-3 text-stone-400 text-sm font-medium">
                                         <div className="w-1 h-1 bg-stone-600 rounded-full" />
-                                        <span>AI Sentiment Control</span>
+                                        <span>Social Media Growth</span>
                                     </div>
                                 </div>
                             </div>
@@ -97,11 +97,11 @@ export function ExitIntentPopup() {
 
                             <div className="space-y-6">
                                 <h3 className="text-2xl md:text-3xl font-black text-white leading-tight tracking-tight">
-                                    Didn't find what you were looking for?
+                                    Ready to solve your marketing issues?
                                 </h3>
 
                                 <p className="text-stone-400 text-lg font-medium leading-relaxed">
-                                    Connect on <span className="text-white">WhatsApp</span> with our Special Advisors Right Now and get all your questions answered.
+                                    Connect on <span className="text-white">WhatsApp</span> for a <span className="text-white">free consultation</span>. Our team is ready to help your business reach its full potential.
                                 </p>
 
                                 <div className="pt-2">
@@ -112,14 +112,14 @@ export function ExitIntentPopup() {
                                         className="group w-full py-5 bg-[#25D366] text-white rounded-2xl flex items-center justify-center gap-3 font-black text-lg hover:scale-[1.02] transition-all shadow-xl shadow-[#25D366]/20 active:scale-95"
                                     >
                                         <WhatsAppIcon className="w-6 h-6" />
-                                        Open Protocol Chat
+                                        Connect on WhatsApp
                                         <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                                     </a>
                                 </div>
 
                                 <div className="flex items-center justify-center gap-3 text-stone-500 font-bold text-xs uppercase tracking-[0.2em] pt-4">
                                     <span className="w-8 h-px bg-white/10" />
-                                    <span className="text-primary italic">10 second response guarantee</span>
+                                    <span className="text-primary italic">Fast response guaranteed</span>
                                     <span className="w-8 h-px bg-white/10" />
                                 </div>
                             </div>

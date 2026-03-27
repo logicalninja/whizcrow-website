@@ -1,7 +1,8 @@
 User-agent: *
 Allow: /
-Disallow: /_next/static/
 Disallow: /api/
+Disallow: /book/thank-you
+Disallow: /_next/static/
 
 User-agent: GPTBot
 Disallow:

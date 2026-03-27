@@ -3,8 +3,18 @@ import { Metadata } from "next";
 import { ServiceLayout } from "@/components/marketing/ServiceLayout";
 
 export const metadata: Metadata = {
-    title: "WhizCommerce | E-Commerce Strategy & Store Optimization",
-    description: "Sell more online. WhizCommerce provides end-to-end e-commerce management and optimization to drive predictable sales and revenue growth.",
+    title: "E-Commerce Marketing Agency & Shopify Marketing India",
+    description: "WhizCommerce is an e-commerce marketing agency in India. Shopify store setup, optimisation, paid traffic, and retention strategies that grow your online revenue.",
+    openGraph: {
+        title: "E-Commerce Marketing Agency & Shopify Marketing India",
+        description: "WhizCommerce is an e-commerce marketing agency in India. Shopify store setup, optimisation, paid traffic, and retention strategies that grow your online revenue.",
+        url: "https://whizcrow.com/services/commerce",
+        type: "website",
+    },
+    alternates: {
+        canonical: "https://whizcrow.com/services/commerce",
+    },
+    robots: { index: true, follow: true },
 };
 
 const commercePageData = {
@@ -55,6 +65,32 @@ const commercePageData = {
         { title: "WhizDigital", link: "/services/digital" },
         { title: "WhizAds", link: "/services/ads" },
         { title: "WhizContent", link: "/services/content" }
+    ],
+    faqs: [
+        {
+            question: "Which e-commerce platforms do you work with?",
+            answer: "Shopify is our primary platform — we're an official Shopify Partner. We also work with WooCommerce, Magento, and custom-built stores. For new stores, we recommend Shopify for most businesses due to its reliability, ecosystem, and conversion-optimised infrastructure. We advise on platform selection before you commit."
+        },
+        {
+            question: "Do you build stores from scratch or only optimise existing ones?",
+            answer: "Both. For new stores, we handle full setup: store architecture, theme selection or custom development, product catalogue upload, payment gateway integration, tax and shipping configuration, and launch. For existing stores, we conduct a conversion audit first to identify the highest-impact improvements before changing anything."
+        },
+        {
+            question: "How do you improve conversion rates on an existing store?",
+            answer: "Conversion rate optimisation is systematic, not guesswork. We analyse heatmaps, session recordings, funnel drop-off data, and checkout abandonment rates. Then we test improvements to product pages, add-to-cart flows, checkout UX, trust signals, and page speed. Every change is measured against a control so we know what actually worked."
+        },
+        {
+            question: "Can you manage our store's ongoing operations?",
+            answer: "Yes. WhizCommerce includes ongoing store management for clients who need it: product listing, inventory updates, promotional banner changes, discount code setup, customer service integration, and monthly performance reporting. We effectively act as your e-commerce operations team."
+        },
+        {
+            question: "Do you handle driving traffic to the store as well?",
+            answer: "Yes — a great store with no traffic generates nothing. WhizCommerce integrates with WhizAds for paid media, WhizDigital for SEO and organic traffic, and WhizInfluence for creator partnerships. We treat store performance and traffic acquisition as one connected system, not separate disciplines."
+        },
+        {
+            question: "What does a typical WhizCommerce engagement look like?",
+            answer: "Week 1–2: Audit and strategy. Week 3–6: Store build or optimisation implementation. Week 7–8: Testing, QA, and launch. Month 2 onwards: Traffic acquisition, CRO testing, retention flows, and monthly reporting. You have a dedicated account manager throughout, and we align milestones to your revenue targets — not just deliverables."
+        }
     ]
 };
 

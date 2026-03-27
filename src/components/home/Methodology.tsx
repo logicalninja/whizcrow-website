@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Database, Cpu, Users } from "lucide-react";
+import { Database, Cpu, Users, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export function Methodology() {
     return (
@@ -69,6 +70,21 @@ export function Methodology() {
                     </motion.div>
 
                 </div>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 }}
+                    className="text-center mt-16"
+                >
+                    <Link
+                        href="/contact"
+                        className="inline-flex items-center gap-2 px-8 py-4 bg-white text-stone-900 font-bold rounded-full hover:bg-stone-100 transition-all group"
+                    >
+                        See how we apply this to your business
+                        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                </motion.div>
             </div>
         </section>
     );

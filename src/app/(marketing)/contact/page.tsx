@@ -1,43 +1,100 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { InstitutionalInquiryForm } from "@/components/contact/InstitutionalInquiryForm";
-import { Mail, Globe2, ShieldAlert, Clock, ArrowRight, Phone, MapPin, Linkedin, Twitter, Instagram, Facebook, MessageCircle } from "lucide-react";
+import { Mail, Clock, Phone, MapPin, Linkedin, Twitter, Instagram, Facebook } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { WHATSAPP_URL } from "@/components/layout/WhatsAppLink";
 import { Metadata } from "next";
 import JsonLd from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-    title: "Contact | India's #1 ORM Agency",
-    description: "Connect with WhizCrow, the leading digital reputation and intelligence agency in India. Specialized in institutional valuation and crisis defense.",
+    title: "Contact WhizCrow — Marketing Agency Mumbai",
+    description: "Contact WhizCrow, a full-service marketing agency in Mumbai. Reach us for SEO, paid ads, branding, PR, AI automation & more. Call +91 83692 19922 or email us.",
+    openGraph: {
+        title: "Contact WhizCrow — Marketing Agency Mumbai",
+        description: "Contact WhizCrow, a full-service marketing agency in Mumbai. Reach us for SEO, paid ads, branding, PR, AI automation & more. Call +91 83692 19922 or email us.",
+        url: "https://whizcrow.com/contact",
+        type: "website",
+    },
+    alternates: {
+        canonical: "https://whizcrow.com/contact",
+    },
+    robots: { index: true, follow: true },
 };
 
 const faqs = [
     {
-        q: "What is the primary difference between PR and ORM?",
-        a: "PR focuses on building a brand through media; ORM focused on protecting the brand by engineering the digital record and indexing facts over fiction."
+        q: "What services does WhizCrow offer?",
+        a: "We're a full-service marketing agency. We handle SEO, social media management, paid advertising (Google & Meta), content creation, email marketing, branding, website design, and MICE (events & conferences). Whether you need one service or a complete marketing team, we've got you covered."
     },
     {
-        q: "How long does it take to suppress negative search results?",
-        a: "While every case is unique, our BRAM™ engine typically begins shifting the equilibrium of Page 1 results within 45-90 days, with 24/7 crisis monitoring starting immediately."
+        q: "How long before I start seeing results?",
+        a: "It depends on the channel. Paid ads typically show results within the first week. SEO takes 3–6 months to build momentum. Social media growth is steady from month one. We set realistic expectations upfront and report progress every month so you're never in the dark."
     },
     {
-        q: "Is this service confidential?",
-        a: "100%. We operate under strict NDAs for high-net-worth individuals, politicians, and multinational corporations. We are the silent guardians of institutional valuation."
+        q: "Do you work with small businesses or only large companies?",
+        a: "We work with businesses of all sizes — from startups finding their footing to established brands looking to scale. Our approach is tailored to your budget and goals, not a one-size-fits-all package."
     },
     {
-        q: "Do you work with AI-driven reputation issues?",
-        a: "Yes. We specialized in LLM track-back and AI crawler governance, ensuring that machine-generated content reflects your brand's true authority."
+        q: "How do I know which services are right for my business?",
+        a: "Send us a message or give us a call and we'll have an honest conversation about where you are now and where you want to go. We'll recommend only what makes sense for your situation — no upselling, no fluff."
     },
     {
-        q: "Why is WhizCrow considered India's #1 ORM Agency?",
-        a: "Because we are the only agency that owns the underlying technical infrastructure. We don't just \"talk to journalists\"; we \"codify digital trust\" through proprietary code and data science."
+        q: "What makes WhizCrow different from other marketing agencies?",
+        a: "We treat your business like our own. You get a dedicated team that understands your industry, communicates clearly, and focuses on outcomes — not just activity. We measure everything and tie our work directly to your business goals."
     }
 ];
+
+const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://whizcrow.com/#localbusiness",
+    name: "WhizCrow",
+    description: "WhizCrow is a full-service marketing agency in Mumbai offering SEO, paid ads, branding, content marketing, PR, influencer marketing, ORM, AI automation, e-commerce, and MICE event marketing.",
+    url: "https://whizcrow.com",
+    logo: "https://whizcrow.com/logos/blackbackground.png",
+    image: "https://whizcrow.com/logos/blackbackground.png",
+    telephone: "+91-83692-19922",
+    email: "hello@whizcrow.com",
+    foundingDate: "2017",
+    priceRange: "$$",
+    address: {
+        "@type": "PostalAddress",
+        streetAddress: "No. 516, 5th Floor, Options Primo Building, Off Cross Rd C, near Passport Office",
+        addressLocality: "Andheri East, Mumbai",
+        addressRegion: "Maharashtra",
+        postalCode: "400093",
+        addressCountry: "IN",
+    },
+    geo: {
+        "@type": "GeoCoordinates",
+        latitude: 19.1203341,
+        longitude: 72.8760731,
+    },
+    openingHoursSpecification: [
+        {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            opens: "09:00",
+            closes: "18:00",
+        },
+    ],
+    sameAs: [
+        "https://ae.linkedin.com/company/whizcrow",
+        "https://www.instagram.com/whizcrow/",
+        "https://x.com/whizcrow",
+        "https://www.facebook.com/whizcrowtechnologies/",
+    ],
+    hasMap: "https://maps.google.com/?q=WhizCrow+Technologies+Andheri+East+Mumbai",
+};
 
 export default function ContactPage() {
     return (
         <div className="flex flex-col min-h-screen bg-stone-50">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+            />
             <JsonLd type="ContactPage" />
             <JsonLd type="FAQPage" data={faqs.map(f => ({ question: f.q, answer: f.a }))} />
             <JsonLd type="BreadcrumbList" data={{
@@ -56,11 +113,11 @@ export default function ContactPage() {
                         {/* Left: Hero Copy */}
                         <div className="lg:col-span-6 pt-8 md:pt-12">
                             <h1 className="text-5xl md:text-7xl font-black text-stone-900 mb-8 tracking-tighter leading-[0.95]">
-                                India&apos;s #1 <br />
-                                <span className="text-primary italic">Reputation Agency.</span>
+                                Contact Us for
+                                <span className="text-primary italic"> Unfiltered Advice</span> on Marketing for Your Business.
                             </h1>
                             <p className="text-xl md:text-2xl text-stone-600 leading-relaxed font-medium max-w-xl">
-                                The Apex of Digital Authority. We engineer the digital record for the world&apos;s most influential entities.
+                                Whether you want more customers, a stronger online presence, or a full marketing strategy — we&apos;re here to help. No sales pitch, just a real conversation.
                             </p>
 
                             <div className="mt-12 flex items-center gap-6">
@@ -79,7 +136,7 @@ export default function ContactPage() {
                                     ))}
                                 </div>
                                 <p className="text-xs md:text-sm font-bold text-stone-900">
-                                    Trusted by 500+ <span className="text-stone-400">Industry Leaders</span>
+                                    Trusted by 500+ <span className="text-stone-400">businesses across India</span>
                                 </p>
                             </div>
                         </div>
@@ -94,17 +151,14 @@ export default function ContactPage() {
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 
                                 <div className="mb-10 relative z-10">
-                                    <div className="flex items-center gap-2 text-primary font-black uppercase tracking-widest text-[10px] mb-4">
-                                        <ShieldAlert size={14} /> Immediate Response Protocol
-                                    </div>
-                                    <h2 className="text-3xl font-bold text-white mb-3 tracking-tight">Initiate Discovery</h2>
-                                    <p className="text-stone-400 font-medium text-sm italic">Connect with our reputation architects.</p>
+                                    <h2 className="text-3xl font-bold text-white mb-3 tracking-tight">Let&apos;s Talk</h2>
+                                    <p className="text-stone-400 font-medium text-sm">Fill in your details and we&apos;ll get back to you within one business day.</p>
                                 </div>
 
                                 <InstitutionalInquiryForm />
 
-                                <div className="mt-10 pt-8 border-t border-white/5 italic text-[11px] text-stone-500 font-medium text-center">
-                                    WhizCrow operates with extreme discretion for multi-billion dollar market caps and scrutinized leadership.
+                                <div className="mt-10 pt-8 border-t border-white/5 text-[11px] text-stone-500 font-medium text-center">
+                                    Your information is kept private and never shared with third parties.
                                 </div>
                             </div>
                         </div>
@@ -114,58 +168,39 @@ export default function ContactPage() {
                     <div className="space-y-24">
                         {/* Direct Channels Grid */}
                         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                            <a href="https://wa.me/15558676280?text=I%20need%20immediate%20reputation%20assistance." target="_blank" rel="noopener noreferrer" className="p-8 bg-stone-900 border border-primary/30 rounded-[2.5rem] hover:shadow-[0_0_30px_rgba(255,215,0,0.1)] transition-all group lg:scale-105 shadow-xl relative overflow-hidden">
+                            <a href="https://wa.me/918369219922?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20marketing%20services." target="_blank" rel="noopener noreferrer" className="p-8 bg-stone-900 border border-primary/30 rounded-[2.5rem] hover:shadow-[0_0_30px_rgba(255,215,0,0.1)] transition-all group lg:scale-105 shadow-xl relative overflow-hidden">
                                 <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
                                 <WhatsAppIcon className="w-10 h-10 text-primary mb-6 group-hover:scale-110 transition-transform" />
                                 <div className="flex items-center gap-2 mb-2">
-                                    <h3 className="text-[10px] font-black uppercase tracking-widest text-primary">Priority WhatsApp</h3>
+                                    <h3 className="text-[10px] font-black uppercase tracking-widest text-primary">WhatsApp</h3>
                                     <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                                 </div>
-                                <p className="text-xl font-bold text-white tracking-tight">+1 555-867-6280</p>
-                                <p className="text-[10px] text-stone-500 font-bold uppercase mt-2">Get Response in &lt; 10s</p>
+                                <p className="text-xl font-bold text-white tracking-tight">+91 83692 19922</p>
+                                <p className="text-[10px] text-stone-500 font-bold uppercase mt-2">Chat with us anytime</p>
                             </a>
                             <a href="mailto:hello@whizcrow.com" className="p-8 bg-white border border-stone-200 rounded-[2.5rem] hover:shadow-xl transition-all group">
                                 <Mail size={32} className="text-secondary mb-6 group-hover:scale-110 transition-transform" />
-                                <h3 className="text-xs font-black uppercase tracking-widest text-stone-400 mb-2">Email Inquiry</h3>
+                                <h3 className="text-xs font-black uppercase tracking-widest text-stone-400 mb-2">Email Us</h3>
                                 <p className="text-xl font-bold text-stone-900">hello@whizcrow.com</p>
                             </a>
                             <a href="tel:+918369219922" className="p-8 bg-white border border-stone-200 rounded-[2.5rem] hover:shadow-xl transition-all group">
                                 <Phone size={32} className="text-primary mb-6 group-hover:scale-110 transition-transform" />
-                                <h3 className="text-xs font-black uppercase tracking-widest text-stone-400 mb-2">Direct Calling</h3>
+                                <h3 className="text-xs font-black uppercase tracking-widest text-stone-400 mb-2">Call Us</h3>
                                 <p className="text-xl font-bold text-stone-900">+91 83692 19922</p>
                             </a>
                             <div className="p-8 bg-white border border-stone-200 rounded-[2.5rem]">
                                 <Clock size={32} className="text-orange-500 mb-6" />
-                                <h3 className="text-xs font-black uppercase tracking-widest text-stone-400 mb-2">Business Hours</h3>
-                                <p className="text-lg font-bold text-stone-900 leading-tight">Mon-Fri: 09:00 - 18:00<br /><span className="text-primary italic text-sm">24/7 Crisis Deployment</span></p>
+                                <h3 className="text-xs font-black uppercase tracking-widest text-stone-400 mb-2">Office Hours</h3>
+                                <p className="text-lg font-bold text-stone-900 leading-tight">Mon–Fri: 9am – 6pm<br /><span className="text-stone-500 text-sm font-medium">IST (Mumbai)</span></p>
                             </div>
                         </div>
 
                         {/* Secondary Info Grid */}
                         <div className="grid lg:grid-cols-12 gap-16 md:gap-24 items-start">
-                            <div className="lg:col-span-5 space-y-16">
-                                {/* Global Presence */}
-                                <div className="space-y-8">
-                                    <h2 className="text-3xl font-bold text-stone-900">Global Presence</h2>
-                                    <div className="flex flex-row items-center justify-between lg:justify-start lg:gap-16 w-full max-w-2xl px-2 overflow-hidden">
-                                        <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 group shrink-0">
-                                            <span className="text-xl sm:text-3xl grayscale group-hover:grayscale-0 transition-all duration-500">🇮🇳</span>
-                                            <span className="text-[10px] sm:text-2xl font-black text-stone-900 tracking-[0.1em]">INDIA</span>
-                                        </div>
-                                        <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 group shrink-0">
-                                            <span className="text-xl sm:text-3xl grayscale group-hover:grayscale-0 transition-all duration-500">🇦🇪</span>
-                                            <span className="text-[10px] sm:text-2xl font-black text-stone-900 tracking-[0.1em]">UAE</span>
-                                        </div>
-                                        <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 group shrink-0">
-                                            <span className="text-xl sm:text-3xl grayscale group-hover:grayscale-0 transition-all duration-500">🇺🇸</span>
-                                            <span className="text-[10px] sm:text-2xl font-black text-stone-900 tracking-[0.1em]">USA</span>
-                                        </div>
-                                    </div>
-                                </div>
-
+                            <div className="lg:col-span-5 space-y-8">
                                 {/* Social Presence */}
-                                <div className="flex flex-col gap-6 pt-8 border-t border-stone-200">
-                                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-stone-400">Digital Footprint</span>
+                                <div className="flex flex-col gap-6">
+                                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-stone-400">Follow Us</span>
                                     <div className="flex gap-4">
                                         <a href="https://ae.linkedin.com/company/whizcrow" target="_blank" rel="noopener noreferrer" className="p-4 bg-white border border-stone-200 rounded-2xl hover:bg-stone-900 hover:text-white transition-all shadow-sm">
                                             <Linkedin size={24} />
@@ -181,11 +216,40 @@ export default function ContactPage() {
                                         </a>
                                     </div>
                                 </div>
+
+                                {/* Office Address */}
+                                <div className="flex flex-col gap-4 pt-8 border-t border-stone-200">
+                                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-stone-400">Our Office</span>
+                                    <div className="flex gap-3">
+                                        <MapPin size={18} className="text-primary shrink-0 mt-1" />
+                                        <p className="text-stone-700 font-medium leading-relaxed text-sm">
+                                            No. 516, 5th Floor, Options Primo Building,<br />
+                                            Off, Cross Rd C, near Passport Office,<br />
+                                            opp. Maruti Service Center, Shree Krishna Nagar,<br />
+                                            MIDC, Andheri East, Mumbai,<br />
+                                            Maharashtra 400093, India
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Google Maps Embed */}
+                                <div className="rounded-[2rem] overflow-hidden border border-stone-200 shadow-sm">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.710911881808!2d72.8760731!3d19.1203341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c94386774637%3A0x8dfa53f597fe102d!2sWhizCrow%20Technologies%20Private%20Limited!5e0!3m2!1sen!2sae!4v1774045903114!5m2!1sen!2sae"
+                                        width="100%"
+                                        height="300"
+                                        style={{ border: 0 }}
+                                        allowFullScreen
+                                        loading="lazy"
+                                        referrerPolicy="no-referrer-when-downgrade"
+                                        title="WhizCrow Office Location"
+                                    />
+                                </div>
                             </div>
 
                             {/* Strategic FAQs */}
                             <div className="lg:col-span-7 space-y-12">
-                                <h2 className="text-3xl font-bold text-stone-900">Strategic FAQs</h2>
+                                <h2 className="text-3xl font-bold text-stone-900">Common Questions</h2>
                                 <div className="space-y-10">
                                     {faqs.map((faq, i) => (
                                         <div key={i} className="group border-b border-stone-200 pb-10 last:border-0 hover:border-primary/30 transition-colors">

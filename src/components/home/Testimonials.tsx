@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
+import { Star, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const col1 = [
     {
@@ -85,10 +86,7 @@ export function Testimonials() {
         <section className="py-24 bg-warm-beige relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-7xl">
                 <div className="text-center mb-16 relative z-20">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-stone-200 text-secondary-dark text-xs font-bold uppercase tracking-wider mb-6 shadow-sm">
-                        Social Proof
-                    </div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-stone-900">Trusted by the Boardroom.</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold text-stone-900">Real results. Real clients.</h2>
                 </div>
 
                 <div className="flex md:grid md:grid-cols-2 gap-6 h-[700px] overflow-hidden relative">
@@ -112,6 +110,20 @@ export function Testimonials() {
                         {[...col2, ...col2, ...col2].map((item, i) => <Card key={`c2-${i}`} item={item} />)}
                     </motion.div>
                 </div>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-center mt-12"
+                >
+                    <Link
+                        href="/contact"
+                        className="inline-flex items-center gap-2 px-8 py-4 bg-stone-900 text-white font-bold rounded-full hover:bg-stone-800 transition-all group"
+                    >
+                        Start your own success story
+                        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                </motion.div>
             </div>
         </section>
     );

@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# blog images — extracted from JSON, rsynced to server once (not in git)
+/public/blog-images/

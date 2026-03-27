@@ -1,122 +1,115 @@
 #!/bin/bash
+# ─────────────────────────────────────────────────────────
+# WhizCrow — Manual Deploy Script
+# Use this ONLY for the first-time server setup, or for
+# manual deploys outside of GitHub Actions.
+#
+# Normal deploys: just `git push origin main` → GitHub
+# Actions handles everything automatically.
+#
+# Usage:
+#   First-time full setup:   ./deploy.sh setup user@ip
+#   Manual redeploy:         ./deploy.sh deploy user@ip
+#   Sync blog images only:   ./deploy.sh images user@ip
+# ─────────────────────────────────────────────────────────
 
-# WhizCrow "Push-to-Deploy" Script
-# Usage: ./deploy.sh [USER@IP]
-# Example: ./deploy.sh root@192.168.1.1
+MODE=$1
+TARGET=$2
 
-TARGET=$1
-
-if [ -z "$TARGET" ]; then
-  echo "Usage: ./deploy.sh user@ip_address"
+if [ -z "$MODE" ] || [ -z "$TARGET" ]; then
+  echo "Usage: ./deploy.sh [setup|deploy|images] user@ip"
+  echo ""
+  echo "  setup   — first-time: clone repo + rsync images + start server"
+  echo "  deploy  — manual: git pull + docker rebuild on server"
+  echo "  images  — rsync blog images only (run once after extraction)"
   exit 1
 fi
 
-echo "🚀 preparing deployment to $TARGET..."
+SSH_OPTS="-o StrictHostKeyChecking=no -o ConnectTimeout=15"
+REPO_URL="git@github.com:logicalninja/whizcrow-website.git"
+APP_DIR="/opt/whizcrow"
+IMAGES_DIR="./public/blog-images/"
 
-# 1. create a clean build bundle
-echo "📦 bundling application (excluding junk)..."
-tar --exclude='node_modules' \
-    --exclude='.next' \
-    --exclude='.git' \
-    --exclude='ppt_assets' \
-    --exclude='.DS_Store' \
-    --exclude='deploy.sh' \
-    -czf build.tar.gz .
+# ── Helper ──────────────────────────────────────────────
+ssh_run() {
+  ssh $SSH_OPTS "$TARGET" "$1"
+}
 
-# 2. upload to server
-echo "⬆️  uploading to server..."
-# Force password auth to avoid local key passphrase prompts
-SSH_OPTS="-o StrictHostKeyChecking=no -o PubkeyAuthentication=no"
-export SSHPASS='WhizCrow@123!'
-sshpass -e scp $SSH_OPTS build.tar.gz $TARGET:/tmp/build.tar.gz
+# ── IMAGES: rsync blog images to server (one-time) ──────
+if [ "$MODE" = "images" ]; then
+  echo "📷 Syncing blog images to $TARGET..."
+  echo "   This is a one-time operation (~889MB, runs in background on server)"
+  rsync -avz --progress --compress \
+    -e "ssh $SSH_OPTS" \
+    "$IMAGES_DIR" \
+    "$TARGET:$APP_DIR/public/blog-images/"
+  echo "✅ Blog images synced"
+  exit 0
+fi
 
-# 3. execute remote build & launch
-echo "🔥 launching on server..."
-sshpass -e ssh $SSH_OPTS $TARGET << 'ENDSSH'
+# ── SETUP: first-time server setup ──────────────────────
+if [ "$MODE" = "setup" ]; then
+  echo "🚀 First-time setup on $TARGET..."
+
+  ssh_run "
     set -e
-    # 0. Low-RAM Safety (Auto-Swap)
-    # If less than 2GB RAM and no swap, create 10GB swap to prevent build crashes
-    TOTAL_MEM=$(grep MemTotal /proc/meminfo | awk '{print $2}')
-    if [ $TOTAL_MEM -lt 2000000 ]; then
-        if [ $(free | grep Swap | awk '{print $2}') -lt 10000000 ]; then
-            echo "⚠️  Increasing swap to 10GB for safety..."
-            swapoff -a || true
-            rm -f /swapfile
-            dd if=/dev/zero of=/swapfile bs=1M count=10240
-            chmod 600 /swapfile
-            mkswap /swapfile
-            swapon /swapfile
-            echo "✅ 10GB Swap active"
-        fi
-    fi
-    # The original script had a line here: echo '/swapfile none swap sw 0 0' >> /etc/fstab
-    # This line is typically for persistent swap. The new logic focuses on dynamic swap increase.
-    # If persistent swap is desired, it should be added within the initial swap creation block.
-    # For now, assuming the dynamic increase is sufficient and fstab modification is not needed for every run.
 
-    # install docker if missing
-    if ! command -v docker &> /dev/null; then
-        echo "installing docker..."
-        curl -fsSL https://get.docker.com -o get-docker.sh
-        sh get-docker.sh
+    # Install Docker if missing
+    if ! command -v docker &>/dev/null; then
+      curl -fsSL https://get.docker.com | sh
     fi
 
-    # install docker-compose if missing
-    if ! command -v docker-compose &> /dev/null; then
-        echo "installing docker-compose..."
-        apt-get update && apt-get install -y docker-compose-plugin
+    # Install git if missing
+    apt-get install -y git 2>/dev/null || yum install -y git 2>/dev/null || true
+
+    # Create app directory
+    mkdir -p $APP_DIR
+
+    # Clone repo (requires SSH key on server or HTTPS token)
+    if [ ! -d '$APP_DIR/.git' ]; then
+      git clone $REPO_URL $APP_DIR
     fi
 
-    # prepare directory
-    mkdir -p /opt/whizcrow
-    
-    # clean old public assets to ensure fresh sync
-    rm -rf /opt/whizcrow/public/*
-    
-    # extract new build
-    tar -xzf /tmp/build.tar.gz -C /opt/whizcrow
-    
-    # cleanup tarball
-    rm /tmp/build.tar.gz
-    
-    # go to app dir
-    cd /opt/whizcrow
-
-    # launch!
-    echo "🚀 building and starting containers..."
-    # Create .env symlink so docker-compose build can use it for build-args
-    ln -sf .env.local .env
-    
-    # Ensure swap is active (sometimes fallocate fails, use dd as fallback)
-    # Increase to 8GB for heavy builds
-    if [ $(free | grep Swap | awk '{print $2}') -lt 8000000 ]; then
-        echo "⚠️  Increasing swap to 8GB..."
-        swapoff -a || true
-        rm -f /swapfile
-        dd if=/dev/zero of=/swapfile bs=1M count=8192
-        chmod 600 /swapfile
-        mkswap /swapfile
-        swapon /swapfile
-        echo "✅ Swap increased to 8GB"
+    # Ensure swap
+    if [ \$(free | grep Swap | awk '{print \$2}') -lt 8000000 ]; then
+      swapoff -a || true; rm -f /swapfile
+      dd if=/dev/zero of=/swapfile bs=1M count=8192
+      chmod 600 /swapfile; mkswap /swapfile; swapon /swapfile
     fi
 
-    docker compose down --remove-orphans || true
-    echo "🔥 starting docker build (with 8GB swap protection)..."
-    if docker compose build web; then
-        echo "✅ build successful, launching..."
-        docker compose up -d --remove-orphans
-    else
-        echo "❌ build FAILED. Check logs for OOM or syntax errors."
-        exit 1
-    fi
-    
-    # prune unused images
+    cd $APP_DIR
+    ln -sf .env.local .env 2>/dev/null || true
+    docker compose build web
+    docker compose up -d --remove-orphans
     docker image prune -f
-ENDSSH
+    echo '✅ Server setup complete'
+  "
 
-# 4. cleanup local
-rm build.tar.gz
+  # Sync blog images after server is running
+  echo "📷 Now syncing blog images (889MB, one-time)..."
+  rsync -avz --progress --compress \
+    -e "ssh $SSH_OPTS" \
+    "$IMAGES_DIR" \
+    "$TARGET:$APP_DIR/public/blog-images/"
 
-echo "✅ deployment complete!"
-echo "👉 app: http://$(echo $TARGET | cut -d@ -f2)"
-echo "👉 stats: http://monitor.$(echo $TARGET | cut -d@ -f2) (once DNS is set)"
+  echo ""
+  echo "✅ Full setup complete!"
+  echo "   App: https://whizcrow.com"
+  echo "   Future deploys: git push origin main"
+  exit 0
+fi
+
+# ── DEPLOY: manual redeploy ──────────────────────────────
+if [ "$MODE" = "deploy" ]; then
+  echo "🔄 Manual deploy to $TARGET..."
+  ssh_run "
+    set -e
+    cd $APP_DIR
+    git pull origin main
+    docker compose build web
+    docker compose up -d --remove-orphans
+    docker image prune -f
+    echo '✅ Deploy complete'
+  "
+  exit 0
+fi

@@ -3,8 +3,18 @@ import { Metadata } from "next";
 import { ServiceLayout } from "@/components/marketing/ServiceLayout";
 
 export const metadata: Metadata = {
-    title: "WhizInfluence | Authentic Creator & Influencer Marketing",
-    description: "Let others tell your story. WhizInfluence connects brands with authentic voices and creators to build trust and reach the exact audience you need.",
+    title: "Influencer Marketing Agency India — WhizInfluence",
+    description: "WhizInfluence is a leading influencer marketing agency in India. We connect brands with authentic creators, manage campaigns, and deliver measurable ROI.",
+    openGraph: {
+        title: "Influencer Marketing Agency India — WhizInfluence",
+        description: "WhizInfluence is a leading influencer marketing agency in India. We connect brands with authentic creators, manage campaigns, and deliver measurable ROI.",
+        url: "https://whizcrow.com/services/influence",
+        type: "website",
+    },
+    alternates: {
+        canonical: "https://whizcrow.com/services/influence",
+    },
+    robots: { index: true, follow: true },
 };
 
 const influencePageData = {
@@ -55,6 +65,32 @@ const influencePageData = {
         { title: "WhizPR", link: "/services/pr" },
         { title: "WhizDigital", link: "/services/digital" },
         { title: "WhizContent", link: "/services/content" }
+    ],
+    faqs: [
+        {
+            question: "How do you find and vet the right influencers for our brand?",
+            answer: "We go beyond follower count. We analyse engagement rate, audience demographics, content quality, brand alignment, past partnership performance, and audience authenticity (to filter out fake followers). Every shortlist we present has been manually reviewed — not just scraped from a database."
+        },
+        {
+            question: "What's the difference between macro, micro, and nano influencers?",
+            answer: "Macro influencers (100K–1M+ followers) deliver wide reach and brand awareness. Micro influencers (10K–100K) offer higher engagement and more targeted audiences at lower cost. Nano influencers (1K–10K) have the highest trust and conversion rates within tight communities. The right mix depends entirely on your campaign goals — we advise based on data, not defaults."
+        },
+        {
+            question: "Do you handle influencer contracts and payments?",
+            answer: "Yes. We manage the full commercial relationship: brief preparation, rate negotiation, contract drafting, content approval workflows, posting verification, and payment processing. You stay focused on your business while we handle the operational complexity."
+        },
+        {
+            question: "How do you measure the ROI of influencer campaigns?",
+            answer: "We track what matters: reach and impressions, engagement rate, click-through, promo code redemptions, affiliate link conversions, and direct attribution where trackable. We build measurement frameworks before launch so every campaign has clear KPIs — and we report against them honestly, not selectively."
+        },
+        {
+            question: "Do you work with influencers outside India?",
+            answer: "Yes. We run campaigns across India, the UAE, Southeast Asia, the UK, and beyond. For international campaigns, we work with a vetted regional network and manage the campaign centrally so you have one point of contact regardless of geography."
+        },
+        {
+            question: "Can you run always-on influencer programmes rather than one-off campaigns?",
+            answer: "Absolutely — and we recommend it. One-off activations create spikes. Always-on programmes build sustained trust and recall. We design ongoing ambassador and affiliate programmes that keep your brand in regular conversation with the audiences you care about, at a predictable monthly investment."
+        }
     ]
 };
 

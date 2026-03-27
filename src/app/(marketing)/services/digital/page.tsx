@@ -3,8 +3,18 @@ import { Metadata } from "next";
 import { ServiceLayout } from "@/components/marketing/ServiceLayout";
 
 export const metadata: Metadata = {
-    title: "WhizDigital | Full-Funnel Digital Marketing & SEO",
-    description: "Get found and get customers. WhizDigital delivers predictable search visibility and high-intent lead generation through data-driven digital strategies.",
+    title: "SEO & Digital Marketing Agency in Mumbai — WhizDigital",
+    description: "WhizDigital delivers full-funnel SEO and digital marketing in Mumbai. Search engine optimisation, content, paid ads, and lead generation — all data-driven.",
+    openGraph: {
+        title: "SEO & Digital Marketing Agency in Mumbai — WhizDigital",
+        description: "WhizDigital delivers full-funnel SEO and digital marketing in Mumbai. Search engine optimisation, content, paid ads, and lead generation — all data-driven.",
+        url: "https://whizcrow.com/services/digital",
+        type: "website",
+    },
+    alternates: {
+        canonical: "https://whizcrow.com/services/digital",
+    },
+    robots: { index: true, follow: true },
 };
 
 const digitalPageData = {
@@ -55,6 +65,32 @@ const digitalPageData = {
         { title: "WhizAI", link: "/services/ai" },
         { title: "WhizAds", link: "/services/ads" },
         { title: "WhizContent", link: "/services/content" }
+    ],
+    faqs: [
+        {
+            question: "How long does SEO take to show results?",
+            answer: "Honest answer: most campaigns see meaningful movement in 3–6 months, with compounding gains through months 6–12. It depends on your domain's existing authority, keyword competition, and how much ground needs to be covered technically. We share a clear roadmap with milestones so you always know what to expect and when."
+        },
+        {
+            question: "What exactly is included in WhizDigital?",
+            answer: "WhizDigital covers the full digital marketing stack: technical SEO, on-page and off-page optimisation, content strategy and creation, local SEO, link building, social media authority, and lead generation. We treat these as one connected system — not separate activities — because that's how compounding growth actually works."
+        },
+        {
+            question: "Do you guarantee first-page rankings?",
+            answer: "No ethical SEO agency can guarantee specific rankings — search algorithms change, and anyone who promises otherwise is misleading you. What we guarantee is rigorous, transparent execution of proven strategy. Our track record across 200+ campaigns consistently delivers strong page-one presence for the keywords that matter to your business."
+        },
+        {
+            question: "How do you measure success?",
+            answer: "We don't report on vanity metrics. WhizDigital reports on the numbers that actually affect your bottom line: organic traffic growth, keyword ranking improvements, conversion rates, cost per acquisition, and qualified leads entering your CRM. You see exactly what changed and what drove it."
+        },
+        {
+            question: "Do you handle technical SEO and site audits?",
+            answer: "Yes — technical SEO is foundational to everything else we do. We conduct comprehensive site audits covering page speed, crawlability, indexation, mobile usability, Core Web Vitals, structured data, internal linking, and canonicalisation. Problems here limit every other investment, so we fix them first."
+        },
+        {
+            question: "Can you help with local SEO for a Mumbai-based business?",
+            answer: "Absolutely. Local SEO — Google Business Profile optimisation, local citations, geo-targeted content, and review management — is a major strength. Whether you're targeting customers in Andheri, across Mumbai, or in multiple Indian cities, we build the local visibility that puts you ahead of nearby competitors."
+        }
     ]
 };
 

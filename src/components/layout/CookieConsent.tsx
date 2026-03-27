@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { X, Cookie, Shield, BarChart3, Target, ChevronRight } from "lucide-react";
+import { X, Shield, BarChart3, Target } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ConsentPreferences {
@@ -91,64 +91,49 @@ export function CookieConsent() {
 
     return (
         <>
-            {/* Cookie Banner */}
+            {/* Cookie Banner — slim bottom bar */}
             <AnimatePresence>
                 {showBanner && !showSettings && (
                     <motion.div
-                        initial={{ y: 100, opacity: 0 }}
+                        initial={{ y: 80, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: 100, opacity: 0 }}
-                        transition={{ duration: 0.4, ease: "easeOut" }}
-                        className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6"
+                        exit={{ y: 80, opacity: 0 }}
+                        transition={{ duration: 0.35, ease: "easeOut" }}
+                        className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-stone-200 shadow-lg"
                     >
-                        <div className="container mx-auto max-w-6xl">
-                            <div className="bg-white/95 backdrop-blur-xl border border-stone-200 rounded-2xl shadow-2xl p-6 md:p-8">
-                                <div className="flex items-start justify-between gap-6">
-                                    <div className="flex-1">
-                                        <div className="flex items-center gap-3 mb-4">
-                                            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                                                <Cookie className="text-primary" size={20} />
-                                            </div>
-                                            <h3 className="text-lg md:text-xl font-bold text-stone-900">
-                                                We Value Your Privacy
-                                            </h3>
-                                        </div>
-                                        <p className="text-sm md:text-base text-stone-600 mb-6 leading-relaxed">
-                                            We use cookies to enhance your experience, analyze site traffic, and personalize content. You can customize your preferences or accept all cookies.{" "}
-                                            <a href="/privacy" className="text-primary hover:underline font-medium">
-                                                Learn more
-                                            </a>
-                                        </p>
-                                        <div className="flex flex-wrap gap-3">
-                                            <button
-                                                onClick={acceptAll}
-                                                className="px-6 py-3 bg-primary text-onyx font-bold rounded-full hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 text-sm md:text-base"
-                                            >
-                                                Accept All
-                                            </button>
-                                            <button
-                                                onClick={rejectAll}
-                                                className="px-6 py-3 bg-stone-100 text-stone-900 font-medium rounded-full hover:bg-stone-200 transition-all text-sm md:text-base"
-                                            >
-                                                Reject All
-                                            </button>
-                                            <button
-                                                onClick={() => setShowSettings(true)}
-                                                className="px-6 py-3 text-stone-700 font-medium hover:text-primary transition-colors flex items-center gap-2 text-sm md:text-base"
-                                            >
-                                                Customize
-                                                <ChevronRight size={16} />
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <button
-                                        onClick={() => setShowBanner(false)}
-                                        className="p-2 hover:bg-stone-100 rounded-full transition-colors"
-                                        aria-label="Close"
-                                    >
-                                        <X size={20} className="text-stone-500" />
-                                    </button>
-                                </div>
+                        <div className="container mx-auto max-w-6xl px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+                            <p className="text-xs text-stone-500 leading-snug">
+                                We use cookies to improve your experience.{" "}
+                                <a href="/privacy" className="text-primary hover:underline font-medium">
+                                    Learn more
+                                </a>
+                            </p>
+                            <div className="flex items-center gap-2">
+                                <button
+                                    onClick={() => setShowSettings(true)}
+                                    className="px-3 py-1.5 text-xs text-stone-500 hover:text-stone-800 transition-colors underline underline-offset-2"
+                                >
+                                    Customise
+                                </button>
+                                <button
+                                    onClick={rejectAll}
+                                    className="px-4 py-1.5 text-xs bg-stone-100 text-stone-700 font-medium rounded-full hover:bg-stone-200 transition-all"
+                                >
+                                    Reject All
+                                </button>
+                                <button
+                                    onClick={acceptAll}
+                                    className="px-4 py-1.5 text-xs bg-primary text-onyx font-bold rounded-full hover:bg-primary/90 transition-all shadow-sm shadow-primary/20"
+                                >
+                                    Accept All
+                                </button>
+                                <button
+                                    onClick={() => setShowBanner(false)}
+                                    className="p-1 hover:bg-stone-100 rounded-full transition-colors ml-1"
+                                    aria-label="Close"
+                                >
+                                    <X size={14} className="text-stone-400" />
+                                </button>
                             </div>
                         </div>
                     </motion.div>

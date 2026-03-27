@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, TrendingUp, ShieldCheck, Rocket } from "lucide-react";
+import { CheckCircle2, TrendingUp, ShieldCheck, Rocket, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export function Outcomes() {
     return (
@@ -47,6 +48,9 @@ export function Outcomes() {
                                 <span className="font-semibold text-stone-800 text-sm">WhizDigital essentials</span>
                             </li>
                         </ul>
+                        <Link href="/contact" className="mt-auto text-sm font-bold text-stone-900 hover:text-primary flex items-center gap-1 transition-colors">
+                            Get started <ArrowRight size={14} />
+                        </Link>
                     </motion.div>
 
                     {/* Scalers */}
@@ -78,6 +82,9 @@ export function Outcomes() {
                                 <span className="font-semibold text-stone-800 text-sm">WhizCommerce</span>
                             </li>
                         </ul>
+                        <Link href="/contact" className="mt-auto text-sm font-bold text-stone-900 hover:text-primary flex items-center gap-1 transition-colors">
+                            Get started <ArrowRight size={14} />
+                        </Link>
                     </motion.div>
 
                     {/* Established - Premium treatment using brand guidelines */}
@@ -112,6 +119,9 @@ export function Outcomes() {
                                 <span className="font-semibold text-stone-200 text-sm">WhizInfluence</span>
                             </li>
                         </ul>
+                        <Link href="/contact" className="mt-auto text-sm font-bold text-primary hover:text-primary/80 flex items-center gap-1 transition-colors relative z-10">
+                            Get started <ArrowRight size={14} />
+                        </Link>
                     </motion.div>
 
                 </div>

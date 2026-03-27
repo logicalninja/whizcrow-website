@@ -1,11 +1,10 @@
 @import "tailwindcss";
-
+@plugin "@tailwindcss/typography";
 @theme {
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-outfit);
+  --font-display: var(--font-outfit);
+  --font-body: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
-
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
 
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
@@ -133,6 +132,148 @@
 
 .animate-draw {
   animation: draw 3s ease-out forwards;
+}
+
+@layer utilities {
+  .prose-whizcrow {
+    max-width: none;
+    line-height: 1.85;
+    color: var(--foreground);
+    font-size: 1.25rem;
+    
+    & h2 {
+      color: #111827; /* Near black */
+      font-weight: 800;
+      font-size: 3rem;
+      margin-top: 5rem;
+      margin-bottom: 2rem;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      font-family: var(--font-display);
+    }
+
+    & h3 {
+      color: #1f2937; /* Dark gray */
+      font-weight: 700;
+      font-size: 2rem;
+      margin-top: 4rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      font-family: var(--font-display);
+    }
+
+    & p {
+      margin-bottom: 2.5rem;
+      font-family: var(--font-body);
+      color: #374151; /* gray-700 for better readability */
+      @apply leading-relaxed;
+    }
+
+    & a {
+      @apply transition-all duration-300 border-b-2 border-primary/20 hover:border-primary/80 hover:bg-primary/5 px-0.5 -mx-0.5 rounded-sm font-semibold;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    & blockquote {
+      position: relative;
+      margin: 5rem 0;
+      padding: 3.5rem 4rem;
+      background: linear-gradient(to bottom right, #f8fafc, #f1f5f9);
+      border-radius: 2.5rem;
+      font-style: normal;
+      color: #1e293b;
+      font-size: 1.75rem;
+      line-height: 1.4;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      border: 1px solid rgba(0,0,0,0.03);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.02);
+      
+      &::before {
+        content: "“";
+        position: absolute;
+        top: -1rem;
+        left: 2rem;
+        font-size: 8rem;
+        font-family: serif;
+        color: var(--primary);
+        opacity: 0.2;
+        line-height: 1;
+      }
+
+      & cite {
+        display: block;
+        margin-top: 1.5rem;
+        font-size: 1rem;
+        font-style: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        color: #64748b;
+      }
+    }
+
+    & ul {
+      list-style-type: none;
+      margin: 3rem 0;
+      padding: 0;
+      
+      & li {
+        @apply relative pl-8 mb-4 flex items-start;
+        &::before {
+          content: "";
+          @apply absolute left-0 top-[0.65em] w-2.5 h-2.5 rounded-sm rotate-45 bg-primary shrink-0;
+        }
+      }
+    }
+
+    & ol {
+      counter-reset: whiz-counter;
+      list-style-type: none;
+      margin: 3rem 0;
+      padding: 0;
+      
+      & li {
+        @apply relative pl-12 mb-6 flex flex-col;
+        counter-increment: whiz-counter;
+        &::before {
+          content: counter(whiz-counter, decimal-leading-zero);
+          @apply absolute left-0 top-0 text-primary font-black font-mono text-[10px] tracking-widest leading-none bg-primary/5 px-2 py-1 rounded-sm;
+        }
+      }
+    }
+
+    & strong {
+      color: #111827;
+      font-weight: 800;
+    }
+
+    & code {
+      @apply bg-stone-100 text-stone-800 px-2 py-0.5 rounded-md text-sm font-mono border border-stone-200;
+    }
+
+    & pre {
+      @apply bg-stone-950 text-stone-100 p-10 rounded-[2.5rem] shadow-2xl overflow-x-auto my-16 border border-white/5 relative;
+      &::after {
+        content: "";
+        @apply absolute inset-0 bg-[url('/grid.svg')] opacity-5 pointer-events-none;
+      }
+      & code {
+        @apply bg-transparent text-inherit p-0 border-none rounded-none relative z-10;
+      }
+    }
+
+    & img {
+      @apply rounded-[3rem] shadow-2xl my-24 ring-1 ring-black/5 hover:scale-[1.01] transition-transform duration-500 cursor-zoom-in;
+    }
+
+    & hr {
+      @apply my-24 border-stone-100 border-t-2;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+    }
+  }
 }
 
 .brand-curve-path {

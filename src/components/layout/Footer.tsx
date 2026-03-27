@@ -40,7 +40,7 @@ export function Footer() {
                             <a href="https://www.facebook.com/whizcrowtechnologies/" target="_blank" rel="noopener noreferrer" className="p-2 bg-stone-800 rounded-full hover:bg-stone-700 hover:text-white transition-colors" aria-label="Follow us on Facebook">
                                 <Facebook size={18} />
                             </a>
-                            <a href="https://wa.me/15558676280" target="_blank" rel="noopener noreferrer" className="p-2 bg-stone-800 rounded-full hover:bg-[#25D366] hover:text-white transition-colors flex items-center justify-center shadow-lg hover:shadow-[#25D366]/20 transition-all" aria-label="Chat on WhatsApp">
+                            <a href="https://wa.me/918369219922" target="_blank" rel="noopener noreferrer" className="p-2 bg-stone-800 rounded-full hover:bg-[#25D366] hover:text-white transition-colors flex items-center justify-center shadow-lg hover:shadow-[#25D366]/20 transition-all" aria-label="Chat on WhatsApp">
                                 <WhatsAppIcon className="w-4 h-4" />
                             </a>
                         </div>
@@ -87,8 +87,8 @@ export function Footer() {
                             </div>
                             <div>
                                 <span className="block text-white font-medium">Rapid Response</span>
-                                <a href="https://wa.me/15558676280" target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-primary transition-colors">
-                                    +1 555-867-6280 (WhatsApp)
+                                <a href="https://wa.me/918369219922" target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-primary transition-colors">
+                                    +91 83692 19922 (WhatsApp)
                                 </a>
                             </div>
                         </div>

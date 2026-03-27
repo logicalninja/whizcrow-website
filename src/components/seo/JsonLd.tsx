@@ -133,7 +133,7 @@ export default function JsonLd({ type = 'Organization', data }: JsonLdProps) {
             timeRequired: data.readTime,
             mainEntityOfPage: {
                 '@type': 'WebPage',
-                '@id': `https://whizcrow.com/insights/${data.slug}`
+                '@id': `https://whizcrow.com/blog/${data.slug}`
             }
         };
         // Add takeaways as 'about' or custom structured data if needed
@@ -151,7 +151,7 @@ export default function JsonLd({ type = 'Organization', data }: JsonLdProps) {
             hasPart: data.items.map((item: any) => ({
                 '@type': 'WebPage',
                 name: item.title,
-                url: `https://whizcrow.com/insights/${item.slug}`
+                url: `https://whizcrow.com/blog/${item.slug}`
             }))
         };
     } else if (type === 'DigitalDocument' && data) {

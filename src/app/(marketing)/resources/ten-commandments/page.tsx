@@ -21,7 +21,7 @@ export default function TenCommandmentsPage() {
             <JsonLd type="BreadcrumbList" data={{
                 itemListElement: [
                     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://whizcrow.com" },
-                    { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://whizcrow.com/insights" },
+                    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://whizcrow.com/blog" },
                     { "@type": "ListItem", "position": 3, "name": "Ten Commandments", "item": "https://whizcrow.com/resources/ten-commandments" }
                 ]
             }} />

@@ -3,15 +3,25 @@ import { Metadata } from "next";
 import { ServiceLayout } from "@/components/marketing/ServiceLayout";
 
 export const metadata: Metadata = {
-    title: "WhizBrand | World-Class Identity Design & Strategy",
-    description: "Look like who you are. WhizBrand creates spectacular brand identities and strategic messaging frameworks for brands ready to define their category.",
+    title: "Branding Agency Mumbai — Brand Identity Design",
+    description: "WhizBrand is a leading branding agency in Mumbai delivering world-class brand identity design, brand strategy, visual systems, and messaging frameworks.",
+    openGraph: {
+        title: "Branding Agency Mumbai — Brand Identity Design",
+        description: "WhizBrand is a leading branding agency in Mumbai delivering world-class brand identity design, brand strategy, visual systems, and messaging frameworks.",
+        url: "https://whizcrow.com/services/brand",
+        type: "website",
+    },
+    alternates: {
+        canonical: "https://whizcrow.com/services/brand",
+    },
+    robots: { index: true, follow: true },
 };
 
 const brandPageData = {
     id: "brand",
     title: "WhizBrand",
-    heroSubtitle: "Look Like Who You Are",
-    heroDescription: "Your brand is what people say about you when you're not in the room. WhizBrand makes sure they say the right things through world-class identity design.",
+    heroSubtitle: "Branding Done Right",
+    heroDescription: "A strong brand isn't just a logo — it's the feeling people get every time they interact with you. WhizBrand builds cohesive, compelling identities that make you instantly recognisable and impossible to ignore.",
     stats: [
         { label: "Consistency", value: "Absolute", icon: "Shield" },
         { label: "Aesthetic", value: "World-Class", icon: "Palette" },
@@ -55,6 +65,32 @@ const brandPageData = {
         { title: "WhizContent", link: "/services/content" },
         { title: "WhizPR", link: "/services/pr" },
         { title: "WhizDigital", link: "/services/digital" }
+    ],
+    faqs: [
+        {
+            question: "What does a full brand identity project include?",
+            answer: "A complete WhizBrand engagement covers brand strategy (positioning, messaging, competitive differentiation), visual identity (logo, colour palette, typography, iconography), brand guidelines document, and application across key touchpoints — business cards, letterhead, social media templates, and digital assets. We also build the messaging framework your whole team can use."
+        },
+        {
+            question: "How long does a branding project take?",
+            answer: "A full brand identity project typically takes 6–10 weeks. Brand strategy takes 2 weeks of discovery and workshops. Visual identity design runs 3–5 weeks including feedback rounds. Final delivery and guidelines take 1–2 weeks. If you need certain assets faster, we can stage delivery to match your launch timeline."
+        },
+        {
+            question: "Do you handle brand strategy or just visual design?",
+            answer: "Both — and we believe you can't do good visual design without solid strategy first. We start every brand project with a strategic foundation: who you are, who you're for, what you stand for, and how you're different. The visual identity flows directly from that. Logo-first branding without strategy is decoration, not brand-building."
+        },
+        {
+            question: "Can you rebrand an existing business without losing brand equity?",
+            answer: "Yes, and we do this carefully. Rebranding isn't starting from zero — it's identifying what's worth keeping, what's holding you back, and how to evolve with continuity. We audit your existing brand equity, map stakeholder perceptions, and design a transition that feels fresh to the market without confusing your existing customers."
+        },
+        {
+            question: "What files and deliverables do I receive at the end?",
+            answer: "You receive everything in full. Vector source files (AI, EPS, SVG), print-ready PDFs, digital formats (PNG, JPG, WebP), dark and light logo variants, favicon and app icon files, and a comprehensive brand guidelines PDF. Every file is yours to use however you need, with no ongoing licensing."
+        },
+        {
+            question: "How many revision rounds are included?",
+            answer: "Our standard engagement includes three structured revision rounds — enough for meaningful iteration without scope creep. Each round is anchored to clear feedback, not vague preferences. We find that structured rounds consistently produce better results than open-ended revisions, and we're transparent about what's included before we start."
+        }
     ]
 };
 

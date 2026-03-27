@@ -3,8 +3,18 @@ import { Metadata } from "next";
 import { ServiceLayout } from "@/components/marketing/ServiceLayout";
 
 export const metadata: Metadata = {
-    title: "WhizAds | High-ROI Paid Search & Social Advertising",
-    description: "Spend smart and scale fast. WhizAds manages high-performance campaigns across Google, Meta, and LinkedIn to deliver measurable return on ad spend.",
+    title: "Paid Advertising Agency & Google Ads Agency Mumbai",
+    description: "WhizAds is a high-performance paid advertising agency in Mumbai. Google Ads, Meta Ads, LinkedIn campaigns — engineered for maximum ROAS and scalable growth.",
+    openGraph: {
+        title: "Paid Advertising Agency & Google Ads Agency Mumbai",
+        description: "WhizAds is a high-performance paid advertising agency in Mumbai. Google Ads, Meta Ads, LinkedIn campaigns — engineered for maximum ROAS and scalable growth.",
+        url: "https://whizcrow.com/services/ads",
+        type: "website",
+    },
+    alternates: {
+        canonical: "https://whizcrow.com/services/ads",
+    },
+    robots: { index: true, follow: true },
 };
 
 const adsPageData = {
@@ -55,6 +65,32 @@ const adsPageData = {
         { title: "WhizDigital", link: "/services/digital" },
         { title: "WhizCommerce", link: "/services/commerce" },
         { title: "WhizAI", link: "/services/ai" }
+    ],
+    faqs: [
+        {
+            question: "Which ad platforms do you manage?",
+            answer: "We run campaigns across Google Ads (Search, Display, Shopping, YouTube), Meta Ads (Facebook and Instagram), LinkedIn Ads, TikTok Ads, Snapchat, Pinterest, X (Twitter), and programmatic display networks. Platform selection is driven by where your audience actually is and what delivers the best return for your specific goals."
+        },
+        {
+            question: "What is the minimum ad budget you work with?",
+            answer: "We generally recommend a minimum media spend of ₹50,000–₹1,00,000 per month to generate enough data for meaningful optimisation. Below that threshold, campaigns don't have sufficient volume to learn and compound. Our management fee is separate from your media spend. We're transparent about what's realistic at each budget level."
+        },
+        {
+            question: "How do you optimise campaigns once they're live?",
+            answer: "Daily. We monitor spend pacing, audience performance, creative fatigue, bid strategy, and conversion data every day — not weekly. When something works, we scale it quickly. When something doesn't, we fix it or cut it. This daily attention to detail is one of the primary reasons our clients' ROAS consistently outperforms industry benchmarks."
+        },
+        {
+            question: "Do you handle ad creative and copy as well?",
+            answer: "Yes — we handle the full campaign: strategy, targeting, creative (static images, carousels, video ads), ad copy, landing page recommendations, tracking setup, and ongoing optimisation. You can bring your own creative or use ours. We've found that campaigns with purpose-built creative consistently outperform those with repurposed brand assets."
+        },
+        {
+            question: "What ROAS can we realistically expect?",
+            answer: "It varies significantly by industry, product, and competition. Rather than give you a number that sounds good, we do a proper account audit or competitive analysis before projecting any return. What we can tell you is that across our active client portfolio, average ROAS consistently improves quarter over quarter — and we show you the data to prove it."
+        },
+        {
+            question: "Do you manage retargeting and remarketing campaigns?",
+            answer: "Yes — retargeting is one of the highest-ROI activities in paid media. We set up full funnel retargeting across Google and Meta, segmented by visitor behaviour (viewed product, added to cart, abandoned checkout, past purchaser). We also build lookalike audiences from your best customers to find new prospects at scale."
+        }
     ]
 };
 

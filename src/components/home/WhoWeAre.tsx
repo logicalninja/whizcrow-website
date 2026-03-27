@@ -60,7 +60,7 @@ export function WhoWeAre() {
                             <div className="p-8 bg-secondary/5 rounded-[2.5rem] border border-secondary/10 hover:border-secondary/30 transition-all h-full flex flex-col justify-center cursor-pointer group hover:shadow-lg hover:shadow-secondary/5">
                                 <Globe className="text-secondary mb-4 group-hover:rotate-12 transition-transform" size={32} />
                                 <h4 className="font-bold text-xl mb-2">Global Reach</h4>
-                                <p className="text-sm text-stone-500">Serving clients across NY, London, Dubai, and Singapore.</p>
+                                <p className="text-sm text-stone-500">Serving clients across NY, Dubai, and Singapore.</p>
                             </div>
                         </div>
                     </div>

@@ -1,0 +1,50 @@
+name: Deploy to Linode
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Deploy to Linode via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.LINODE_HOST }}
+          username: ${{ secrets.LINODE_USER }}
+          key: ${{ secrets.LINODE_SSH_KEY }}
+          port: 22
+          command_timeout: 25m
+          script: |
+            set -e
+            cd /opt/whizcrow
+
+            echo "── Pulling latest code ──"
+            git pull origin main
+
+            echo "── Ensuring swap for Docker build ──"
+            if [ $(free | grep Swap | awk '{print $2}') -lt 8000000 ]; then
+              swapoff -a || true
+              rm -f /swapfile
+              dd if=/dev/zero of=/swapfile bs=1M count=8192 status=progress
+              chmod 600 /swapfile
+              mkswap /swapfile
+              swapon /swapfile
+              echo "✅ 8GB swap active"
+            fi
+
+            echo "── Building Docker image ──"
+            docker compose build web
+
+            echo "── Launching containers ──"
+            docker compose up -d --remove-orphans
+
+            echo "── Pruning old images ──"
+            docker image prune -f
+
+            echo "✅ Deployment complete"

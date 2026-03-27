@@ -38,7 +38,7 @@ const sitemapData = [
         category: "Resources & Insights",
         icon: <Zap className="text-purple-500" />,
         links: [
-            { label: "Insights Hub", href: "/insights" },
+            { label: "Blog", href: "/blog" },
             { label: "Technical FAQs", href: "/#faq" },
         ]
     },

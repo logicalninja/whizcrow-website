@@ -59,7 +59,7 @@ export function Hero() {
                             ))}
                         </div>
                         <span className="text-[10px] font-bold text-stone-300 uppercase tracking-widest pr-1">
-                            Trusted by 5000+ Leaders
+                            Trusted by 500+ Leaders
                         </span>
                     </motion.div>
                 </div>
@@ -86,7 +86,7 @@ export function Hero() {
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className="text-lg md:text-xl text-stone-600 mb-8 max-w-3xl leading-relaxed"
                 >
-                    One agency. Every capability. From foundation to growth. Absolute marketing control—driven by Data, AI, and Human judgment.
+                    One agency covering every part of your marketing — branding, content, digital ads, PR, and more. We handle it so you can focus on running your business.
                 </motion.p>
 
                 {/* CTAs */}
@@ -97,17 +97,17 @@ export function Hero() {
                     className="flex flex-col sm:flex-row items-center gap-4 w-full justify-center"
                 >
                     <Link
-                        href="#stage-nav"
+                        href="/contact"
                         className="w-full sm:w-auto px-8 py-4 bg-stone-900 text-white font-bold rounded-full hover:bg-stone-800 transition-all flex items-center justify-center gap-2 group"
                     >
-                        Explore Services
+                        Book a Free Consultation
                         <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
                     <Link
-                        href="/contact"
+                        href="/services"
                         className="w-full sm:w-auto px-8 py-4 bg-white text-stone-900 font-bold border border-stone-200 rounded-full hover:border-stone-300 hover:bg-stone-50 transition-all flex items-center justify-center"
                     >
-                        Talk to Us
+                        View Services
                     </Link>
                 </motion.div>
 
